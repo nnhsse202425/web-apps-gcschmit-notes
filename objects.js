@@ -32,3 +32,25 @@ journalEntry = {
 console.log(journalEntry);
 console.log(typeof journalEntry);
 console.log(journalEntry.getLength());
+
+/**
+ * Accessing properties
+ *  use the dot notation, like in Java
+ *  non-existent properties return undefined
+ */
+console.log(journalEntry.date);
+console.log(journalEntry.studentName);
+
+// properties can be added to objects after construction
+journalEntry.studentName = "Schmit";
+console.log(journalEntry.studentName);
+
+/**
+ * Object reference
+ *  variables of type Object have a value that is a reference to the object, like in Java
+ *  copying an object reference is not the same as copying the object, like in Java
+ *  can use Object.assign and structuredClone to clone objects
+ */
+const newJournalEntry = journalEntry;
+newJournalEntry.date = "2024-11-14";
+console.log(journalEntry.date); // 2024-11-14
