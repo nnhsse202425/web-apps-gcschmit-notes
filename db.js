@@ -26,6 +26,13 @@ async function run() {
     console.log("all planets");
     await printAll(cursor);
 
+    // if you want all the elements referenced by the cursor as an array,
+    //  use the toArray function
+    cursor = coll.find();
+    const planets = await cursor.toArray();
+    console.log("all planets as array:");
+    console.log(planets);
+
     cursor = coll.find({ hasRings: true });
     console.log("planets with rings:");
     await printAll(cursor);
