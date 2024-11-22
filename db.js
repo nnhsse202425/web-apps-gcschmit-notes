@@ -30,17 +30,22 @@ async function run() {
     //  use the toArray function
     cursor = coll.find();
     const planets = await cursor.toArray();
-    console.log("all planets as array:");
+    console.log("all planets as an array");
     console.log(planets);
 
+    // find with a query object will return a cursor to all documents
+    //  that match the query
     cursor = coll.find({ hasRings: true });
     console.log("planets with rings:");
     await printAll(cursor);
 
+    // there can be multiple properties in the query object and all must
+    //  match (i.e., and)
     cursor = coll.find({ hasRings: false, mainAtmosphere: "Ar" });
     console.log("planets without rings with Argon in the atmosphere:");
     await printAll(cursor);
 
+    // operators can be specified (e.g., $lt, $gt, $lte, $gte, $ne, $in, $nin)
     cursor = coll.find({ "surfaceTemperatureC.mean": { $lt: 15 } });
     console.log("planets with average surface temperature less than 15 C:");
     await printAll(cursor);
